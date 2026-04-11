@@ -1,4 +1,7 @@
-<?php include 'includes/layout.php'; ?>
+<?php
+session_start();
+include 'includes/layout.php';
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -9,6 +12,13 @@
 </head>
 
 <body class="bg-light">
+
+    <?php
+    if (isset($_SESSION['error_login'])) {
+        echo '<script>alert("' . $_SESSION['error_login'] . '");</script>';
+        unset($_SESSION['error_login']);
+    }
+    ?>
 
     <div class="container mt-5 d-flex flex-column min-vh-100">
         <div class="row justify-content-center">

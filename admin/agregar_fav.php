@@ -23,12 +23,18 @@ if (!$id_inmueble) {
     exit();
 }
 
-/* Si el usuario ya tiene el inmueble en favoritos
- * no puede volver a agregarlo */
+/* Si el usuario ya tiene el inmueble en favoritos, lo puede eliminar
+ * Si no lo tiene, lo agrega */
 $stmt_check = $pdo->prepare("SELECT id FROM favoritos WHERE id_usuario = ? AND id_inmueble = ?");
 $stmt_check->execute([$id_usuario, $id_inmueble]);
+$favorito_existe = $stmt_check->fetch();
 
-if (!$stmt_check->fetch()) {
+if ($favorito_existe) {
+    /* Eliminar de favoritos */
+    $stmt = $pdo->prepare("DELETE FROM favoritos WHERE id_usuario = ? AND id_inmueble = ?");
+    $stmt->execute([$id_usuario, $id_inmueble]);
+} else {
+    /* Agregar a favoritos */
     $stmt = $pdo->prepare("INSERT INTO favoritos (id_usuario, id_inmueble) VALUES (?, ?)");
     $stmt->execute([$id_usuario, $id_inmueble]);
 }

@@ -77,11 +77,6 @@ include 'includes/layout.php';
                         <div class="small fw-bold mt-2"><?php echo $inmueble['banos']; ?> Baños</div>
                     </div>
                 </div>
-                <div class="col-4 col-md-2">
-                    <div class="p-3 bg-light rounded-3 border-bottom border-3 border-ilerna">
-                        <i class="bi bi-rulers fs-3 text-ilerna"></i>
-                        <div class="small fw-bold mt-2">120 m²</div> </div>
-                </div>
             </div>
 
             <h4 class="fw-bold mb-3 border-bottom pb-2">Descripción</h4>
@@ -97,12 +92,16 @@ include 'includes/layout.php';
                         <?php echo number_format($inmueble['precio'], 0, ',', '.'); ?> €
                     </h2>
 
-                     <?php if(isset($_SESSION['rol']) && $_SESSION['rol'] === 'cliente'): ?>
+                    <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'cliente'): ?>
                         <div class="text-center mb-3">
                             <?php if ($esFavorito): ?>
-                                <span class="badge bg-success py-2 px-3">
+                                <span class="badge bg-success py-2 px-3 mb-2">
                                     <i class="bi bi-heart-fill"></i> Inmueble en favoritos
                                 </span>
+                                <a class="btn btn-danger btn-sm" href="../admin/agregar_fav.php?id=<?php echo $id; ?>">
+                                    <i class="bi bi-heart-fill"></i> ELIMINAR DE FAVORITOS
+                                </a>
+
                             <?php else: ?>
                                 <a class="btn btn-ilerna-pub btn-sm" href="../admin/agregar_fav.php?id=<?php echo $id; ?>">
                                     <i class="bi bi-plus-circle"></i> AGREGAR A FAVORITOS
@@ -111,7 +110,7 @@ include 'includes/layout.php';
                         </div>
                     <?php endif; ?>
                     <hr>
-                    
+
                     <h5 class="fw-bold mb-3">Solicitar información</h5>
                     <form action="mailto:administracion@ilernahomes.com" method="POST">
                         <div class="mb-3">

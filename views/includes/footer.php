@@ -7,20 +7,20 @@
                     Tu inmobiliaria de confianza. Encontramos la casa de tus sueños con el sello de calidad y profesionalidad que nos caracteriza.
                 </p>
                 <div class="mt-4">
-                    <a href="#" class="text-white me-3 fs-5 hover-cyan"><i class="bi bi-facebook"></i></a>
-                    <a href="#" class="text-white me-3 fs-5 hover-cyan"><i class="bi bi-instagram"></i></a>
-                    <a href="#" class="text-white me-3 fs-5 hover-cyan"><i class="bi bi-twitter-x"></i></a>
-                    <a href="#" class="text-white fs-5 hover-cyan"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://www.facebook.com/ilernahomes" target="_blank" class="text-white me-3 fs-5 hover-cyan"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.instagram.com/ilernahomes" target="_blank" class="text-white me-3 fs-5 hover-cyan"><i class="bi bi-instagram"></i></a>
+                    <a href="https://twitter.com/ilernahomes" target="_blank" class="text-white me-3 fs-5 hover-cyan"><i class="bi bi-twitter-x"></i></a>
+                    <a href="https://www.linkedin.com/company/ilernahomes" target="_blank" class="text-white fs-5 hover-cyan"><i class="bi bi-linkedin"></i></a>
                 </div>
             </div>
 
             <div class="col-md-2 mb-4">
                 <h6 class="text-uppercase fw-bold mb-4 text-ilerna">Navegación</h6>
                 <ul class="list-unstyled">
-                    <li class="mb-2"><a href="index.php" class="text-secondary text-decoration-none">Inicio</a></li>
-                    <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Sobre nosotros</a></li>
-                    <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Inmuebles</a></li>
-                    <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Contacto</a></li>
+                    <li class="mb-2"><a href="../views/index.php" class="text-secondary text-decoration-none">Inicio</a></li>
+                    <li class="mb-2"><a href="../views/about.php" class="text-secondary text-decoration-none">Sobre nosotros</a></li>
+                    <li class="mb-2"><a href="../views/index.php #main" class="text-secondary text-decoration-none">Inmuebles</a></li>
+                    <li class="mb-2"><a href="../views/contacto.php" class="text-secondary text-decoration-none">Contacto</a></li>
                 </ul>
             </div>
 
@@ -45,8 +45,8 @@
 
         <div class="row align-items-center">
             <div class="col-md-12 text-center">
-                <p class="small text-muted mb-0">
-                    &copy; <?php echo date('Y'); ?> <strong>ILERNA HOMES</strong>. Proyecto Final - Creado por [Tu Nombre]
+                <p class="small text-muted mb-0 text-ilerna">
+                    &copy; <?php echo date('Y'); ?> <strong>ILERNA HOMES</strong>. Proyecto Final - Creado por Juan Manuel Cordero. Todos los derechos reservados.
                 </p>
             </div>
         </div>
@@ -55,4 +55,5 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

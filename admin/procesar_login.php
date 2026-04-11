@@ -37,7 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         exit();
     } else {
-        /* Si falla el login, lo mandamos de vuelta a login.php con un mensaje */
-        header("Location: login.php?error=1");
+        /* Si falla el login, guardamos el mensaje de error en sesión y redirigimos */
+        $_SESSION['error_login'] = 'Usuario o contraseña incorrectos';
+        header("Location: ../views/login.php");
+        exit();
     }
 }

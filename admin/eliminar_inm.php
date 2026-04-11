@@ -49,7 +49,7 @@ if (isset($_GET['borrar_id'])) {
  * poner la foto principal de cada uno. Y al igual que en editar_inm.php,
  * usamos un foreach para que todos los inmuebles de la BBDD aparezcan en la tabla.
  * Al clickar en el botón de eliminar nos saldrá una alerta con un mensaje para la confirmacion */
-$sql = "SELECT i.id, i.titulo, i.tipo, i.ciudad, i.precio, f.ruta 
+$sql = "SELECT i.id, i.titulo, i.tipo, i.ciudad, f.ruta 
         FROM inmuebles i 
         LEFT JOIN fotos f ON i.id = f.id_inmueble AND f.es_principal = 1 
         ORDER BY i.id DESC";
@@ -78,7 +78,6 @@ include '../views/includes/layout.php';
                         <th style="width: 100px;">Foto</th>
                         <th>Título</th>
                         <th>Ubicación</th>
-                        <th>Precio</th>
                         <th class="text-center">Acciones</th>
                     </tr>
                 </thead>
@@ -97,7 +96,6 @@ include '../views/includes/layout.php';
                                 <span class="badge bg-info text-dark" style="font-size: 0.7rem;"><?php echo strtoupper($inm['tipo']); ?></span>
                             </td>
                             <td><?php echo $inm['ciudad']; ?></td>
-                            <td class="fw-bold"><?php echo number_format($inm['precio'], 0, ',', '.'); ?> €</td>
                             <td class="text-center">
                                 <a href="?borrar_id=<?php echo $inm['id']; ?>"
                                     class="btn btn-outline-danger btn-sm"

@@ -11,8 +11,8 @@ $inmuebles_hero = $stmt_hero->fetchAll();
 
 
 // 2. BUSCADOR DE INMUEBLES
-$params = []; 
-$where = " WHERE 1=1 "; 
+$params = [];
+$where = " WHERE 1=1 ";
 
 if (!empty($_GET['ciudad'])) {
     $where .= " AND inmuebles.ciudad LIKE ? ";
@@ -27,7 +27,7 @@ if (!empty($_GET['habs'])) {
     $params[] = $_GET['habs'];
 }
 
-$orden_sql = " ORDER BY inmuebles.id DESC "; 
+$orden_sql = " ORDER BY inmuebles.id DESC ";
 if (!empty($_GET['orden'])) {
     if ($_GET['orden'] == 'barato') $orden_sql = " ORDER BY inmuebles.precio ASC ";
     if ($_GET['orden'] == 'caro')   $orden_sql = " ORDER BY inmuebles.precio DESC ";
@@ -47,8 +47,8 @@ include 'includes/hero.php';
 include 'includes/buscador.php';
 ?>
 
-<main class="container py-5">
-    <?php if(isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
+<main id="main" class="container py-5">
+    <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
         <h3 class="bg-ilerna-gold-dark text-ilerna-dark p-3 rounded text-center mb-4">Gestión de Administrador</h3>
     <?php endif; ?>
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -64,25 +64,25 @@ include 'includes/buscador.php';
                     <div class="card h-100 border-0 shadow-sm card-inmueble">
                         <a href="detalle.php?id=<?php echo $casa['id']; ?>" class="text-decoration-none">
                             <div class="position-relative">
-                                <img src="../assets/img/<?php echo $casa['ruta'] ?: 'default.jpg'; ?>" 
-                                     class="card-img-top" style="height: 200px; object-fit: cover;">
+                                <img src="../assets/img/<?php echo $casa['ruta'] ?: 'default.jpg'; ?>"
+                                    class="card-img-top" style="height: 200px; object-fit: cover;">
                                 <span class="badge position-absolute top-0 end-0 m-3 bg-dark">
                                     <?php echo strtoupper($casa['tipo']); ?>
                                 </span>
                             </div>
                         </a>
-                        
+
                         <div class="card-body">
                             <h6 class="card-title fw-bold text-dark text-truncate mb-1"><?php echo $casa['titulo']; ?></h6>
                             <p class="text-muted small mb-2"><i class="bi bi-geo-alt text-ilerna"></i> <?php echo $casa['ciudad']; ?></p>
                             <h5 class="fw-bold text-dark mb-3"><?php echo number_format($casa['precio'], 0, ',', '.'); ?> €</h5>
-                            
+
                             <div class="d-flex justify-content-between text-secondary small border-top pt-2">
                                 <span><i class="bi bi-door-open text-ilerna"></i> <?php echo $casa['habitaciones']; ?> hab.</span>
                                 <span><i class="bi bi-droplet text-ilerna"></i> <?php echo $casa['banos']; ?> baños</span>
                             </div>
                         </div>
-                        
+
                         <div class="card-footer bg-white border-0 pb-3">
                             <a href="detalle.php?id=<?php echo $casa['id']; ?>" class="btn btn-outline-dark btn-sm w-100 rounded-pill">
                                 Ver Detalles
@@ -101,4 +101,4 @@ include 'includes/buscador.php';
         </div>
     <?php endif; ?>
 </main>
-    <?php include 'includes/footer.php'; ?>
+<?php include 'includes/footer.php'; ?>
