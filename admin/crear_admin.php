@@ -7,9 +7,9 @@ require_once '../config/db.php';
 
 /* Aquí introdusco los datos del administrador
  * para la BBDD. (El admin. no se tiene que registrar desde la web) */
-$nombre = "Juan Manuel";
-$email = "admin@admin.com";
-$password_plana = "1234";
+$nombre = getenv('ADMIN_NOMBRE') ?: 'Administrador';
+$email = getenv('ADMIN_EMAIL') ?: 'admin@example.com';
+$password_plana = getenv('ADMIN_PASSWORD') ?: 'cambia_esta_password';
 $rol = "admin";
 
 /* Usamos password_hash para encriptar la contraseña.
