@@ -31,13 +31,29 @@ El proyecto se ha desarrollado bajo un entorno de ciclo completo (**Full-stack**
 
 ---
 
+## 🔐 Configuración
+
+- **Base de datos:** la conexión se define en `config/db.php` (por defecto apunta al MySQL local de XAMPP: `root` sin contraseña).
+- **Crear administrador:** `admin/crear_admin.php` lee las credenciales del administrador desde variables de entorno. Define estas variables (o crea un `.env`) antes de ejecutarlo:
+
+  ```bash
+  export ADMIN_NOMBRE="Tu Nombre"
+  export ADMIN_EMAIL="admin@tudominio.com"
+  export ADMIN_PASSWORD="tu_password_segura"
+  ```
+
+  Si no se definen, se usan valores por defecto de ejemplo (no aptos para producción).
+
+---
+
 ## 📂 Estructura del Proyecto
 
 ```text
 ilerna_homes/
 ├── admin/             # Lógica y formularios de administración (CRUD)
 ├── assets/            # Recursos estáticos (CSS, JS, Imágenes de casas)
-├── config/            # Conexión a la base de datos (PDO)
-├── includes/          # Componentes reutilizables (Header, Footer, Navbar)
-├── views/             # Vistas públicas para el usuario final
-└── index.php          # Página principal de la inmobiliaria
+├── config/            # Conexión a la base de datos (PDO): db.php
+├── db/                # Esquema SQL de la base de datos: estructura.sql
+└── views/             # Vistas públicas para el usuario final
+    ├── includes/      # Componentes reutilizables (Header, Footer, Navbar)
+    └── index.php      # Página principal de la inmobiliaria
