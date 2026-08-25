@@ -4,12 +4,11 @@
 
 $host = getenv('DB_HOST') ?: 'localhost';
 $db   = getenv('DB_NAME') ?: 'ilerna_homes';
-$user = getenv('DB_USER') ?: 'root';
+$user = getenv('DB_USER') ?: 'postgres';
 $pass = getenv('DB_PASS') ?: '';
-$charset = 'utf8mb4';
+$charset = 'utf8';
 
-/* Cadena para la conexión */
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$dsn = "pgsql:host=$host;port=5432;dbname=$db";
 
 /* Opciones de conexión por PDO (PHP Data Objects), mas completo que mysqli */
 $options = [
