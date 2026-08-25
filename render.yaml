@@ -1,9 +1,7 @@
 services:
   - type: web
     name: ilerna-homes
-    runtime: php
-    buildCommand: composer install --no-dev --optimize-autoloader
-    startCommand: php -S 0.0.0.0:$PORT -t .
+    runtime: docker
     envVars:
       - key: DB_HOST
         sync: false
