@@ -51,7 +51,7 @@ if (isset($_GET['borrar_id'])) {
  * Al clickar en el botón de eliminar nos saldrá una alerta con un mensaje para la confirmacion */
 $sql = "SELECT i.id, i.titulo, i.tipo, i.ciudad, f.ruta 
         FROM inmuebles i 
-        LEFT JOIN fotos f ON i.id = f.id_inmueble AND f.es_principal = 1 
+        LEFT JOIN fotos f ON i.id = f.id_inmueble AND f.es_principal = true 
         ORDER BY i.id DESC";
 $inmuebles = $pdo->query($sql)->fetchAll();
 

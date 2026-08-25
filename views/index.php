@@ -5,7 +5,7 @@ require_once __DIR__ . '/../config/db.php';
 // 1. CONSULTA PARA EL CARRUSEL DEL HERO (ultimas 5 fotos)
 $stmt_hero = $pdo->query("SELECT inmuebles.*, fotos.ruta FROM inmuebles 
                           LEFT JOIN fotos ON inmuebles.id = fotos.id_inmueble 
-                          AND fotos.es_principal = 1 
+                          AND fotos.es_principal = true 
                           ORDER BY inmuebles.id DESC LIMIT 5");
 $inmuebles_hero = $stmt_hero->fetchAll();
 
@@ -34,7 +34,7 @@ if (!empty($_GET['orden'])) {
 }
 
 $sql = "SELECT inmuebles.*, fotos.ruta FROM inmuebles 
-        LEFT JOIN fotos ON inmuebles.id = fotos.id_inmueble AND fotos.es_principal = 1 
+        LEFT JOIN fotos ON inmuebles.id = fotos.id_inmueble AND fotos.es_principal = true 
         $where $orden_sql";
 
 $stmt = $pdo->prepare($sql);

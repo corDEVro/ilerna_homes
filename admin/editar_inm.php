@@ -98,7 +98,7 @@ include '../views/includes/layout.php';
     <?php else:
         /* Mostramos la lista de inmuebles almacenados
          * con el boton para su edicion */
-        $sql = "SELECT i.*, f.ruta FROM inmuebles i LEFT JOIN fotos f ON i.id = f.id_inmueble AND f.es_principal = 1 ORDER BY i.id DESC";
+        $sql = "SELECT i.*, f.ruta FROM inmuebles i LEFT JOIN fotos f ON i.id = f.id_inmueble AND f.es_principal = true ORDER BY i.id DESC";
         $inmuebles = $pdo->query($sql)->fetchAll();
     ?>
         <h2 class="fw-bold mb-4"><i class="bi bi-pencil-square"></i> Selecciona el inmueble a Editar</h2>

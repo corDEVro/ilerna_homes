@@ -38,7 +38,7 @@ if (isset($_POST['guardar'])) {
         if (!empty($_FILES['foto_principal']['name'])) {
             $nombre_principal = $id_casa . "_principal_" . $_FILES['foto_principal']['name'];
             if (move_uploaded_file($_FILES['foto_principal']['tmp_name'], $carpeta_destino . $nombre_principal)) {
-                $sql_foto = "INSERT INTO fotos (ruta, es_principal, id_inmueble) VALUES (?, 1, ?)";
+                $sql_foto = "INSERT INTO fotos (ruta, es_principal, id_inmueble) VALUES (?, true, ?)";
                 $pdo->prepare($sql_foto)->execute([$nombre_principal, $id_casa]);
             }
         }
@@ -53,7 +53,7 @@ if (isset($_POST['guardar'])) {
             foreach ($_FILES['galeria']['name'] as $key => $name) {
                 $nombre_galeria = $id_casa . "_gal_" . $contador . "_" . $name;
                 if (move_uploaded_file($_FILES['galeria']['tmp_name'][$key], $carpeta_destino . $nombre_galeria)) {
-                    $sql_galeria = "INSERT INTO fotos (ruta, es_principal, id_inmueble) VALUES (?, 0, ?)";
+                    $sql_galeria = "INSERT INTO fotos (ruta, es_principal, id_inmueble) VALUES (?, false, ?)";
                     $pdo->prepare($sql_galeria)->execute([$nombre_galeria, $id_casa]);
                 }
                 $contador++;
