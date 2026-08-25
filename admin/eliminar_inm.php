@@ -9,7 +9,7 @@ require_once '../config/db.php';
 
 /* Solo el administrador puede eliminar inmuebles */
 if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
-    header("Location: index.php");
+    header("Location: /");
     exit();
 }
 

@@ -30,16 +30,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
          * Si es el admin, se abriran las opciones de gestión y si es cliente,
          * aparecerá el boton "añadir a favoritos" en los detalles de los inmuebles */
         if ($usuario['rol'] == 'admin') {
-            header("Location: ../views/index.php");
+            header("Location: /");
         }
         if ($usuario['rol'] == 'cliente') {
-            header("Location: ../views/index.php");
+            header("Location: /");
         }
         exit();
     } else {
         /* Si falla el login, guardamos el mensaje de error en sesión y redirigimos */
         $_SESSION['error_login'] = 'Usuario o contraseña incorrectos';
-        header("Location: ../views/login.php");
+        header("Location: /login?error=1");
         exit();
     }
 }

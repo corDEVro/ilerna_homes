@@ -24,7 +24,7 @@ $stmt = $pdo->prepare($sql);
  * Si es correcta redirigimos a la pag. de inicio */
 if ($stmt->execute([$nombre, $email, $password_encriptada, $rol])) {
     echo "¡Usuario registrado con éxito!";
-    header("Location: ../views/index.php");
+    header("Location: /");
 } else {
     echo "Error al registrar el usuario.";
 }

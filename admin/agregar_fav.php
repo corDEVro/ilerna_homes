@@ -10,7 +10,7 @@ require_once '../config/db.php';
 /* Solo los usuarios registrados que tengan
  * el rol de cliente pueden agregar favoritos */
 if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'cliente' || !isset($_SESSION['id_usuario'])) {
-    header("Location: ../views/login.php");
+    header("Location: /login");
     exit();
 }
 /* Obtenemos el ID del usuario y el ID del inmueble */
@@ -19,7 +19,7 @@ $id_inmueble = $_GET['id'] ?? null;
 
 /* Si no tengo id de inmueble, vuelvo a la página principal */
 if (!$id_inmueble) {
-    header("Location: ../views/index.php");
+    header("Location: /");
     exit();
 }
 

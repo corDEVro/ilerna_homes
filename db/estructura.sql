@@ -28,8 +28,8 @@ USE ilerna_homes;
         habitaciones INT,
         banos INT,
         ciudad VARCHAR(100),
-        rol_usuario INT,
-        FOREIGN KEY (rol_usuario) REFERENCES usuarios(rol) ON DELETE CASCADE
+        id_usuario INT,
+        FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE
     ) ENGINE=InnoDB;
 
     -- 3. tabla de fotos
