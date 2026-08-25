@@ -14,8 +14,8 @@ if (preg_match('#^/(assets|db|config|sql|composer\.(json|lock))#', $uri)) {
     return false;
 }
 
-// Ruta raíz → homepage
-if ($uri === '/' || $uri === '') {
+// Ruta raíz → homepage (incluye /index.php para evitar loop)
+if ($uri === '/' || $uri === '' || $uri === '/index.php') {
     require __DIR__ . '/views/index.php';
     return;
 }
@@ -38,9 +38,9 @@ foreach ($admin as $a) {
     }
 }
 
-// Fallback: intentar servir el archivo directamente
+// Fallback: servir archivos PHP que no sean el router
 $file = __DIR__ . $uri;
-if (is_file($file) && pathinfo($file, PATHINFO_EXTENSION) === 'php') {
+if (is_file($file) && pathinfo($file, PATHINFO_EXTENSION) === 'php' && basename($file) !== 'index.php') {
     require $file;
     return;
 }
