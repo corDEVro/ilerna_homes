@@ -2,26 +2,32 @@
 
 /* CONFIGURACION DE LA BASE DE DATOS */
 
-$host = getenv('DB_HOST') ?: 'localhost';
-$db   = getenv('DB_NAME') ?: 'ilerna_homes';
-$user = getenv('DB_USER') ?: 'postgres';
-$pass = getenv('DB_PASS') ?: '';
-$charset = 'utf8';
+$dbUrl = getenv('DATABASE_URL');
 
-$dsn = "pgsql:host=$host;port=5432;dbname=$db;sslmode=require";
+if ($dbUrl) {
+    $parts = parse_url($dbUrl);
+    $host = $parts['host'] ?? 'localhost';
+    $port = $parts['port'] ?? '5432';
+    $dbName = ltrim($parts['path'] ?? '/ilerna_homes', '/');
+    $user = $parts['user'] ?? 'postgres';
+    $pass = $parts['pass'] ?? '';
+    $dsn = "pgsql:host=$host;port=$port;dbname=$dbName;sslmode=require";
+} else {
+    $host = getenv('DB_HOST') ?: 'localhost';
+    $db   = getenv('DB_NAME') ?: 'ilerna_homes';
+    $user = getenv('DB_USER') ?: 'postgres';
+    $pass = getenv('DB_PASS') ?: '';
+    $dsn = "pgsql:host=$host;port=5432;dbname=$db;sslmode=require";
+}
 
-/* Opciones de conexión por PDO (PHP Data Objects), mas completo que mysqli */
 $options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,   // Si hay fallo, lanza una excepción (más info para resolver el error))
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,         // Maneja los datos con los nombres de las columnas de las tablas.
-    PDO::ATTR_EMULATE_PREPARES   => false,                    // Desactiva la emulacion de seguridad de las consultas preparadas.
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   => false,
 ];
 
 try {
-
-    $pdo = new PDO($dsn, $user, $pass, $options);   // Creando la conexión con la cadena de conexión, los datos y las opciones.
-
+    $pdo = new PDO($dsn, $user, $pass, $options);
 } catch (\PDOException $e) {
-
-    die("Error de conexión a la base de datos: " . $e->getMessage());   // Mostramos el error de conexión a la BBDD (si lo hay)
+    die("Error de conexion a la base de datos: " . $e->getMessage());
 }
