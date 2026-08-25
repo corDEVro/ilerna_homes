@@ -8,7 +8,7 @@ $user = getenv('DB_USER') ?: 'postgres';
 $pass = getenv('DB_PASS') ?: '';
 $charset = 'utf8';
 
-$dsn = "pgsql:host=$host;port=5432;dbname=$db";
+$dsn = "pgsql:host=$host;port=5432;dbname=$db;sslmode=require";
 
 /* Opciones de conexión por PDO (PHP Data Objects), mas completo que mysqli */
 $options = [
