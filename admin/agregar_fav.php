@@ -5,7 +5,7 @@
 /* Iniciamos la sesion del usuario y
  * agregamos la configuración de la BBDD */
 session_start();
-require_once '../config/db.php';
+require_once __DIR__ . '/../config/db.php';
 
 /* Solo los usuarios registrados que tengan
  * el rol de cliente pueden agregar favoritos */

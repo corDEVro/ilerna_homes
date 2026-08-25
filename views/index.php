@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../config/db.php';
+require_once __DIR__ . '/../config/db.php';
 
 // 1. CONSULTA PARA EL CARRUSEL DEL HERO (ultimas 5 fotos)
 $stmt_hero = $pdo->query("SELECT inmuebles.*, fotos.ruta FROM inmuebles 

@@ -3,7 +3,7 @@
 /* ARCHIVO PARA CREAR UN ADMINISTRADOR */
 
 /* Acceso a la BBDD */
-require_once '../config/db.php';
+require_once __DIR__ . '/../config/db.php';
 
 /* Aquí introdusco los datos del administrador
  * para la BBDD. (El admin. no se tiene que registrar desde la web) */

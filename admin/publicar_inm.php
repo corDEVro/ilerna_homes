@@ -3,7 +3,7 @@
 /* PUBLICAR INMUEBLE (SOLO ADMIN.) */
 
 session_start();
-require_once '../config/db.php';
+require_once __DIR__ . '/../config/db.php';
 
 /* Comprobamos que el rol sea admin, si no lo es, redirigimos a la página de inicio */
 if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {

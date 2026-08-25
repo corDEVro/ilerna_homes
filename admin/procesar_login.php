@@ -3,7 +3,7 @@
 /* PROCESAR LOGIN DE ADMIN/USUARIOS */
 
 session_start();
-require_once '../config/db.php';
+require_once __DIR__ . '/../config/db.php';
 
 /* Comprobamos el envío del formulario */
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
